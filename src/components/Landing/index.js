@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './style.css';
 
-class App extends Component {
+class Landing extends Component {
   // static propTypes = {}
   // static defaultProps = {}
   // state = {}
@@ -32,4 +32,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Landing;
