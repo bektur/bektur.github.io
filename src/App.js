@@ -1,21 +1,30 @@
+
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
+import Landing from './components/Landing';
+import About from './components/About';
+import NotFound from './components/NotFound';
+
 
 class App extends Component {
+  // componentDidMount() {
+  //   setTimeout(this.props.fetchUser, 1000);
+  // }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="container"> 
+        <BrowserRouter>
+          <div className="container">
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/about" component={About} />
+            <Route path="/not" component={NotFound} />
+          </div>
+        </BrowserRouter>
       </div>
     );
   }
-}
+};
 
 export default App;
