@@ -1,26 +1,19 @@
-let path = require('path');
-let LiveReloadPlugin = require('webpack-livereload-plugin');
+const path = require("path");
+
 module.exports = {
-  entry: './client/index.js',
+  entry: "./src/app.js",
+  mode: 'development',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'client/dist')
-  },
-  context: __dirname,
-  resolve: {
-    extensions: ['.js', '.jsx', '.json', '*']
+    path: path.join(__dirname, "public"),
+    filename: "bundle.js"
   },
   module: {
     rules: [{
-      test: /\.jsx?$/,
-      exclude: /(node_modules|bower_components)/,
-      loader: 'babel-loader',
-      options: {
-        presets: ['react', 'es2015']
-      }
-    },
-      {
-        test: /\.scss$/,
+      loader: "babel-loader",
+      test: /\.js$/,
+      exclude: /node_modules/
+    }, {
+        test: /\.s?css$/,
         use: [
           'style-loader',
           'css-loader',
@@ -28,12 +21,9 @@ module.exports = {
         ]
       }]
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.COSMIC_BUCKET': JSON.stringify(process.env.COSMIC_BUCKET),
-      'process.env.COSMIC_READ_KEY': JSON.stringify(process.env.COSMIC_READ_KEY),
-      'process.env.COSMIC_WRITE_KEY': JSON.stringify(process.env.COSMIC_WRITE_KEY)
-    }),
-    new LiveReloadPlugin({appendScriptTag: true})
-  ]
+  devtool: "cheap-module-eval-source-map",
+  devServer: {
+    contentBase: path.join(__dirname, "public"),
+    historyApiFallback: true
+  }
 };
