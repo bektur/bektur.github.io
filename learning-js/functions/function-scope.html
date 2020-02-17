@@ -25,21 +25,16 @@
       para.textContent = 'Value: ' + value;
     }
     
-    function printRand() {
-      let names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
-      let para = document.createElement('p');
+    // Add your code here
+    let names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
+    let para = document.createElement('p');      
+    function myRand(upperBound) {
+        return Math.round(upperBound * Math.rand());
+    }
 
-      // Add your code here
-      function myRand(upperBound) {
-          return Math.round(upperBound * Math.rand());
-      }
-
-      function printName() {
-          let index = myRand(names.length);
-          para.textContent = names[index];
-      }
-
-      // Don't edit the code below here!     
+    function printName() {
+        let index = myRand(names.length);
+        para.textContent = names[index];
     }
   </script>
 </body>
