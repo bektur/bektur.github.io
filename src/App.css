@@ -1,0 +1,30 @@
+
+.center {
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.social-media {
+  width: 35px;
+  margin-right: 5px;
+}
+
+.title {
+  width: 350px;
+  text-align: left;
+}
+
+.App-header {
+  background-color: #282c34;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
