@@ -3,7 +3,11 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 
+/**
+ * Display home page, list of exchanges 
+ */
 function DisplayPage(props) {
+  /** data contains list of exchanges, passed from App.js */
   const { data } = props;
 
   return (

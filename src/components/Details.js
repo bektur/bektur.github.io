@@ -8,10 +8,15 @@ import redditIcon from "../icons/reddit.png";
 import { Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
+/**
+ * Display details about specific exchange
+ */
 function Details(props) {
+  /**  exchange contains details about certain exchange */
   const [exchange, setExchange] = useState({});
   const { id } = useParams();
 
+  /** fetch details only once for specific exchange */
   useEffect(() => {
     fetch(`https://api.coingecko.com/api/v3/exchanges/${id}`)
       .then((response) => response.json())
