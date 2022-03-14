@@ -1,7 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Details from "./Details";
+import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 
 function DisplayPage(props) {    
