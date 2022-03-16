@@ -5,15 +5,19 @@ import Details from "./components/Details";
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Navigate,
+  Route
 } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
+/**
+ * Main application component 
+ */
 function App() {
+  // Api request result will be saved for exchanges
   const [exchanges, setExchange] = useState([]);
 
   useEffect(() => {
+    // request data only once, when first rendered 
     fetch("https://api.coingecko.com/api/v3/exchanges")
       .then((response) => response.json())
       .then((data) => {
