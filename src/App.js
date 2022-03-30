@@ -8,31 +8,41 @@ import {
   Route
 } from "react-router-dom";
 import { createBrowserHistory } from "history";
+import Header from "./components/Header";
+import data from './data.json';
 
 /**
  * Main application component 
  */
 function App() {
   // Api request result will be saved for exchanges
-  const [exchanges, setExchange] = useState([]);
+  const [coins, setExchange] = useState([]);
+  const [currency, setCurrency] = useState('USD');
 
-  useEffect(() => {
-    // request data only once, when first rendered 
-    fetch("https://api.coingecko.com/api/v3/exchanges")
+
+    useEffect(() => {
+      fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}`)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setExchange(data.slice(0, 10));
       });
-  }, []);
+    }, []);
 
   return (
-    <Router history={createBrowserHistory()}>
-      <Routes>
-        <Route exact path="/" element={<DisplayPage data={exchanges} />} />
+    <>
+      <Header />
+      <div style={{height: '50px'}}></div>
+      
+      <Router history={createBrowserHistory()}>
+        <Routes>          
+          <Route exact path="/" element={<DisplayPage data={coins} currency={currency}/>} />
 
-        <Route exact path="/details/:id" element={<Details />} />
-      </Routes>
-    </Router>
+          <Route exact path="/details/:id" element={<Details currency={currency} />} />
+
+        </Routes>
+      </Router>
+    </>
   );
 }
 
